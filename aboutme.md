@@ -7,5 +7,5 @@ eml: leequncn@163.com
 desp:
 ---
 
-eml: leequncn@163.com
+email: leequncn@163.com
 
