@@ -11,5 +11,5 @@ Research:
 - The landscape of alternative splicing during mouse spermatogenesis
 - Alternative splicing prediction by deep neural networks
 - Alternative splicing database and evolution
-- Histone demethylase complexes & Pluripotency gene
+- Histone demethylase complexes & Pluripotency gene <br>
 Email: <a href="mailto:leequncn@163.com">leequncn@163.com</a>
