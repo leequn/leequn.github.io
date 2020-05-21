@@ -12,12 +12,12 @@ author: Lee Qun
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: "aboutme"
+  Home: "https://leequn.github.io/"
   #Resources:
     #- Beautiful Jekyll: "https://beautifuljekyll.com"
     #- Learn markdown: "https://www.markdowntutorial.com/"
   Publications: "publications"
-  Author's home: "https://deanattali.com"
+  About Me: "aboutme"
  
 # --- Logo --- #
 
