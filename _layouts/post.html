@@ -68,3 +68,19 @@ layout: base
     </div>
   </div>
 </div>
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'location.href', // 可选。默认为 location.href
+  owner: 'operontop',
+  repo: 'operonn.github.io',
+  oauth: {
+    client_id: 'ec74a09a3f863a2eb3eb',
+    client_secret: 'fcf06bee6267e8604aeb049664ec134697f73157',
+  },
+})
+gitment.render('container')
+</script>
