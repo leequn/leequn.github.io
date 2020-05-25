@@ -6,9 +6,9 @@ pname: Lee Qun
 eml: leequncn@163.com
 desp:
 ---
-Email: <a href="mailto:leequncn@163.com">leequncn@163.com</a><br>
+Email: <a href="mailto:leequncn@163.com" target="_blank">leequncn@163.com</a><br>
 Major: Bioinformatics <br>
-Other site: http://www.leequn.cn/ <br>
+Other site: <a href="http://www.leequn.cn/" target="_blank">leequn.cn</a> <br>
 Research: 
 - The landscape of alternative splicing during mouse spermatogenesis
 - Alternative splicing prediction by deep neural networks
