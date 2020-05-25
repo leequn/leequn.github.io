@@ -8,6 +8,7 @@ desp:
 ---
 Email: <a href="mailto:leequncn@163.com">leequncn@163.com</a><br>
 Major: Bioinformatics <br>
+Other site: http://www.leequn.cn/ <br>
 Research: 
 - The landscape of alternative splicing during mouse spermatogenesis
 - Alternative splicing prediction by deep neural networks
