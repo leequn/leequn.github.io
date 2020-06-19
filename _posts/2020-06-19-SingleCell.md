@@ -38,5 +38,5 @@ comments: true
 ## References
 
 {: .box-note}
-1. [Introduction to Single-cell RNA-seq](https://hbctraining.github.io/scRNA-seq/schedule/)
-2. 
+- [Introduction to Single-cell RNA-seq](https://hbctraining.github.io/scRNA-seq/schedule/)
+- [test](test) 
