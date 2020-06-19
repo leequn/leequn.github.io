@@ -56,11 +56,17 @@ RNA sequences (also referred to as reads or tags), will be derived either from t
 Many of the same analysis steps need to occur for 3’-end sequencing as for full-length, but 3’ protocols have been increasing in popularity and consist of a few more steps in the analysis. Therefore, our materials are going to detail the analysis of data from these 3’ protocols with a focus on the droplet-based methods (inDrops, Drop-seq, 10X Genomics).
 
 #### 3.1.1 What information is present in each of the reads (3’-end reads (includes all droplet-based methods)
+![pic4](/assets/img/scrnaseq/4.jpg)
 - Sample index:
 - Cellular barcode:
 - Unique molecular identifier (UMI):
 - Sequencing read1:
 - Sequencing read2:
+
+The analysis workflow for scRNA-seq is similar for the different droplet-based scRNA-seq methods, but the parsing of the UMIs, cell IDs, and sample indices, will differ between them. For example, below is a schematic of the 10X sequence reads, where the indices, UMIs and barcodes are placed differently:
+
+![pic5](/assets/img/scrnaseq/5.jpg)
+
 
 
 ## References
