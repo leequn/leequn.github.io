@@ -10,8 +10,8 @@ comments: true
 
 # Single-cell analysis
 
-## Introduction
-### Why scRNA-seq
+## 1. Introduction
+### 1.1 Why scRNA-seq
 - explore which cell types are present in a tissue
 - identify unknown/rare cell types or states
 - elucidate the changes in gene expression during differentiation processes or across time or states
@@ -20,7 +20,7 @@ comments: true
 <br/>
 ![pic1](/assets/img/scrnaseq/1.jpg)
 
-### Challenges of scRNA-seq analysis
+### 1.2 Challenges of scRNA-seq analysis
 - Large volume of data
 - Low depth of sequencing per cell
 - Biological variability across cells/samples
@@ -35,10 +35,10 @@ comments: true
 	- Amplification bias
 	- Batch effects
 
-## scRNA-seq methods
+## 2. scRNA-seq methods
 ![pic2](/assets/img/scrnaseq/2.jpg)
 
-## scRNA-seq flow
+## 3. scRNA-seq flow
 ![pic3](/assets/img/scrnaseq/3.jpg)
 ### raw data to count matrix
 RNA sequences (also referred to as reads or tags), will be derived either from the 3’ ends (or 5’ ends) of the transcripts (10X Genomics, CEL-seq2, Drop-seq, inDrops) or from full-length transcripts (Smart-seq)
