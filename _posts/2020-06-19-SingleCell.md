@@ -92,6 +92,7 @@ After sequencing, the sequencing facility will either output the raw sequencing 
 - Demultiplexing sample reads
 - Mapping/pseudo-mapping to cDNAs
 - Collapsing UMIs and quantification of reads
+
 If using 10X Genomics library preparation method, then the [Cell Ranger pipeline](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger) would be used for all of the above steps.
 
 ## References
