@@ -34,7 +34,8 @@ comments: true
 	- Amplification bias
 	- Batch effects
 
-## 
+## ScRNA-seq methods
+![pic1](/assets/img/scrnaseq/2.jpg)
 
 ## References
 
