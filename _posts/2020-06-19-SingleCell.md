@@ -22,9 +22,9 @@ comments: true
 1. Large volume of data
 2. Low depth of sequencing per cell
 3. Biological variability across cells/samples
-   (1)
-   (2)
-   (3)
+   -(1)
+   -(2)
+   -(3)
 4. Technical variability across cells/samples
 
 ## References
