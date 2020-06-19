@@ -17,6 +17,7 @@ comments: true
 - elucidate the changes in gene expression during differentiation processes or across time or states
 - identify genes that are differentially expressed in particular cell types between conditions (e.g. treatment or disease)
 - explore changes in expression among a cell type while incorporating spatial, regulatory, and/or protein information
+<br/>
 ![pic1](/assets/img/scrnaseq/1.jpg)
 
 ### Challenges of scRNA-seq analysis
