@@ -83,7 +83,16 @@ The analysis workflow for scRNA-seq is similar for the different droplet-based s
 
 ![pic5](/assets/img/scrnaseq/5.jpg)
 
+### 3.1.2 Generation of count matrix
+After sequencing, the sequencing facility will either output the raw sequencing data as BCL or FASTQ format or will generate the count matrix. If the reads are in BCL format, then we will need to convert to FASTQ format. There is a useful command-line tool called bcl2fastq that can easily perform this conversion.
 
+![pic7](/assets/img/scrnaseq/7.jpg)
+
+- Formatting reads and filtering noisy cellular barcodes
+- Demultiplexing sample reads
+- Mapping/pseudo-mapping to cDNAs
+- Collapsing UMIs and quantification of reads
+If using 10X Genomics library preparation method, then the [Cell Ranger pipeline](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger) would be used for all of the above steps.
 
 ## References
 
