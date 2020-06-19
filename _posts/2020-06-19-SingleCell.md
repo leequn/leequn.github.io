@@ -38,8 +38,15 @@ comments: true
 ## 2. scRNA-seq methods
 ![pic2](/assets/img/scrnaseq/2.jpg)
 
-## 3. scRNA-seq flow
+## 3. scRNA-seq flow (BIOLOGICAL REPLICATES ARE STILL NEEDED!)
+- **Generation of the count matrix (method-specific steps)**: formating reads, demultiplexing samples, mapping and quantification
+- **Quality control of the raw counts**: filtering of poor quality cells
+- **Clustering of filtered counts**: clustering cells based on similarities in transcriptional activity (cell types = different clusters)
+- **Marker identification**: identifying gene markers for each cluster
+- **Optional downstream steps**
+
 ![pic3](/assets/img/scrnaseq/3.jpg)
+
 ### 3.1 Raw data to count matrix
 RNA sequences (also referred to as reads or tags), will be derived either from the 3’ ends (or 5’ ends) of the transcripts (10X Genomics, CEL-seq2, Drop-seq, inDrops) or from full-length transcripts (Smart-seq)
 - 3’ (or 5’)-end sequencing:
