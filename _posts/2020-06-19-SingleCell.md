@@ -15,6 +15,6 @@ comments: true
 
 
 ## References
+
 {: .box-note}
-**Note:** 
-1. [Introduction to Single-cell RNA-seq](https://hbctraining.github.io/scRNA-seq/schedule/)
+**Note:** 1. [Introduction to Single-cell RNA-seq](https://hbctraining.github.io/scRNA-seq/schedule/)
