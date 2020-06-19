@@ -52,6 +52,7 @@ RNA sequences (also referred to as reads or tags), will be derived either from t
 	- Identification of allele-specific differences in expression
 	- Deeper sequencing of a smaller number of cells
 	- Best for samples with low number of cells
+
 Many of the same analysis steps need to occur for 3’-end sequencing as for full-length, but 3’ protocols have been increasing in popularity and consist of a few more steps in the analysis. Therefore, our materials are going to detail the analysis of data from these 3’ protocols with a focus on the droplet-based methods (inDrops, Drop-seq, 10X Genomics).
 
 ## References
