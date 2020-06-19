@@ -40,7 +40,7 @@ comments: true
 
 ## 3. scRNA-seq flow
 ![pic3](/assets/img/scrnaseq/3.jpg)
-### raw data to count matrix
+### 3.1 Raw data to count matrix
 RNA sequences (also referred to as reads or tags), will be derived either from the 3’ ends (or 5’ ends) of the transcripts (10X Genomics, CEL-seq2, Drop-seq, inDrops) or from full-length transcripts (Smart-seq)
 - 3’ (or 5’)-end sequencing:
 	- More accurate quantification through use of unique molecular identifiers distinguishing biological duplicates from amplification (PCR) duplicates
@@ -54,6 +54,14 @@ RNA sequences (also referred to as reads or tags), will be derived either from t
 	- Best for samples with low number of cells
 
 Many of the same analysis steps need to occur for 3’-end sequencing as for full-length, but 3’ protocols have been increasing in popularity and consist of a few more steps in the analysis. Therefore, our materials are going to detail the analysis of data from these 3’ protocols with a focus on the droplet-based methods (inDrops, Drop-seq, 10X Genomics).
+
+#### 3.1.1 What information is present in each of the reads (3’-end reads (includes all droplet-based methods)
+- Sample index:
+- Cellular barcode:
+- Unique molecular identifier (UMI):
+- Sequencing read1:
+- Sequencing read2:
+
 
 ## References
 
