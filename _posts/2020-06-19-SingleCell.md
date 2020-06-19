@@ -35,11 +35,14 @@ comments: true
 	- Amplification bias
 	- Batch effects
 
-## ScRNA-seq methods
-![pic1](/assets/img/scrnaseq/2.jpg)
+## scRNA-seq methods
+![pic2](/assets/img/scrnaseq/2.jpg)
+
+## scRNA-seq flow
+![pic3](/assets/img/scrnaseq/3.jpg)
 
 ## References
 
 {: .box-note}
 - [Introduction to Single-cell RNA-seq](https://hbctraining.github.io/scRNA-seq/schedule/)
-- [test](test) 
+- [single-cell-tutorial](https://github.com/theislab/single-cell-tutorial)
