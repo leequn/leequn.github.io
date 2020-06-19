@@ -63,6 +63,9 @@ Many of the same analysis steps need to occur for 3’-end sequencing as for ful
 	- Each library preparation method has a stock of cellular barcodes used during the library preparation
 - Unique molecular identifier (UMI): determines which transcript molecule the read originated from
 	- The UMI will be used to collapse PCR duplicates
+	- Reads with different UMIs mapping to the same transcript were derived from different molecules and are biological duplicates - each read should be counted.
+	- Reads with the same UMI originated from the same molecule and are technical duplicates - the UMIs should be collapsed to be counted as a single read.
+	- In image below, the reads for ACTB should be collapsed and counted as a single read, while the reads for ARL1 should each be counted.
 
 ![pic6](/assets/img/scrnaseq/6.jpg)
 
