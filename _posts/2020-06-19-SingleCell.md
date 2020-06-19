@@ -57,11 +57,17 @@ Many of the same analysis steps need to occur for 3’-end sequencing as for ful
 
 #### 3.1.1 What information is present in each of the reads (3’-end reads (includes all droplet-based methods)
 ![pic4](/assets/img/scrnaseq/4.jpg)
-- Sample index:
-- Cellular barcode:
-- Unique molecular identifier (UMI):
-- Sequencing read1:
-- Sequencing read2:
+- Sample index: determines which sample the read originated from
+	- Added during library preparation - needs to be documented
+- Cellular barcode: determines which cell the read originated from
+	- Each library preparation method has a stock of cellular barcodes used during the library preparation
+- Unique molecular identifier (UMI): determines which transcript molecule the read originated from
+	- The UMI will be used to collapse PCR duplicates
+
+![pic6](/assets/img/scrnaseq/6.jpg)
+
+- Sequencing read1: the Read1 sequence
+- Sequencing read2: the Read2 sequence
 
 The analysis workflow for scRNA-seq is similar for the different droplet-based scRNA-seq methods, but the parsing of the UMIs, cell IDs, and sample indices, will differ between them. For example, below is a schematic of the 10X sequence reads, where the indices, UMIs and barcodes are placed differently:
 
