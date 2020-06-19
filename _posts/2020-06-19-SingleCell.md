@@ -18,6 +18,14 @@ comments: true
 4. identify genes that are differentially expressed in particular cell types between conditions (e.g. treatment or disease)
 5. explore changes in expression among a cell type while incorporating spatial, regulatory, and/or protein information
 
+### Challenges of scRNA-seq analysis
+1. Large volume of data
+2. Low depth of sequencing per cell
+3. Biological variability across cells/samples
+   (1)
+   (2)
+   (3)
+4. Technical variability across cells/samples
 
 ## References
 
