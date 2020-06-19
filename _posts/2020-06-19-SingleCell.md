@@ -40,6 +40,18 @@ comments: true
 
 ## scRNA-seq flow
 ![pic3](/assets/img/scrnaseq/3.jpg)
+### raw data to count matrix
+RNA sequences (also referred to as reads or tags), will be derived either from the 3’ ends (or 5’ ends) of the transcripts (10X Genomics, CEL-seq2, Drop-seq, inDrops) or from full-length transcripts (Smart-seq)
+- 3’ (or 5’)-end sequencing:
+	- More accurate quantification through use of unique molecular identifiers distinguishing biological duplicates from amplification (PCR) duplicates
+	- Larger number of cells sequenced allows better identity of cell type populations
+	- Cheaper per cell cost
+	- Best results with > 10,000 cells
+- Full length sequencing:
+	- Detection of isoform-level differences in expression
+	- Identification of allele-specific differences in expression
+	- Deeper sequencing of a smaller number of cells
+	- Best for samples with low number of cells
 
 ## References
 
