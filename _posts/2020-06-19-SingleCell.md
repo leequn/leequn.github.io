@@ -159,7 +159,12 @@ library(scales)
 library(cowplot)
 library(RCurl)
 ```
+##### 3.3.3 Loading single-cell RNA-seq count data
+Regardless of the technology or pipeline used to process your single-cell RNA-seq sequence data, the output will generally be the same. That is, for each individual sample you will have the following three files:
 
+1. a file with the cell IDs, representing all cells quantified
+2. a file with the gene IDs, representing all genes quantified
+3. a matrix of counts per gene for every cell
 
 
 ## References
