@@ -165,6 +165,7 @@ library(Matrix)
 library(scales)
 library(cowplot)
 library(RCurl)
+library(stringr)
 ```
 ##### 3.3.3 Loading single-cell RNA-seq count data
 Regardless of the technology or pipeline used to process your single-cell RNA-seq sequence data, the output will generally be the same. That is, for each individual sample you will have the following three files:
@@ -326,6 +327,50 @@ merged_seurat$log10GenesPerUMI <- log10(merged_seurat$nFeature_RNA) / log10(merg
 Seurat has a convenient function that allows us to calculate the **proportion of transcripts mapping to mitochondrial genes**. The `PercentageFeatureSet()` will take a pattern and search the gene identifiers. For each column (cell) it will take the sum of the counts slot for features belonging to the set, divide by the column sum for all features and multiply by 100. `Since we want the ratio value for plotting, we will reverse that step by then dividing by 100.`
 
 `**NOTE:**` The pattern provided (“^MT-“) works for human gene names. You may need to adjust depending on your organism of interest. If you weren’t using gene names as the gene ID, then this function wouldn’t work. We have [code available](https://github.com/hbctraining/scRNA-seq/blob/master/lessons/mitoRatio.md) to compute this metric on your own.
+
+`We need to add additional information to our metadata for our QC metrics, such as the cell IDs, condition information, and various metrics.` While it is quite easy to **add information directly to the metadata slot in the Seurat object using the $ operator**, we will extract the dataframe into a separate variable instead. In this way we can continue to insert additional metrics that we need for our QC analysis without the risk of affecting our `merged_seurat` object.
+
+We will create the metadata dataframe by extracting the meta.data slot from the Seurat object:
+
+```
+#Create metadata dataframe
+metadata <- merged_seurat@meta.data
+```
+
+You should see each cell ID has a `ctrl_` or `stim_` prefix as we had specified when we merged the Seurat objects. These prefixes should match the sample listed in `orig.ident`. Let’s begin by **adding a column with our cell IDs** and **changing the current column names** to be more intuitive:
+
+```
+# Add cell IDs to metadata
+metadata$cells <- rownames(metadata)
+# Rename columns
+metadata <- dplyr::rename(metadata, seq_folder = orig.ident,nUMI = nCount_RNA,nGene = nFeature_RNA)
+```
+
+Now, let’s get **sample names for each of the cells** based on the cell prefix:
+
+```
+# Create sample column
+metadata$sample <- NA
+metadata$sample[which(str_detect(metadata$cells, "^ctrl_"))] <- "ctrl"
+metadata$sample[which(str_detect(metadata$cells, "^stim_"))] <- "stim"
+````
+
+Now you are **all setup with the metrics you need to assess the quality of your data!** Your final metadata table will have rows that correspond to each cell, and columns with information about those cells:
+
+![pic14](/assets/img/scrnaseq/14.jpg)
+
+**Saving the updated metadata to our Seurat object**
+
+Before we assess our metrics we are going to save all of the work we have done thus far back into our Seurat object. We can do this by simply assigning the dataframe into the meta.data slot:
+
+```
+# Add metadata back to Seurat object
+merged_seurat@meta.data <- metadata
+# Create .RData object to load at any time
+save(merged_seurat, file="data/merged_filtered_seurat.RData")
+```
+
+#### 3.3.5 Assessing the quality metrics
 
 
 ## References
