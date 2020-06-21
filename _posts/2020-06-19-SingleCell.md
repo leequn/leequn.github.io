@@ -154,6 +154,7 @@ single_cell_rnaseq/
 └── figures
 ```
 ##### 3.3.2 Loading libraries
+Save the Rscript as `quality_control.R`
 
 ```R
 #load packages
