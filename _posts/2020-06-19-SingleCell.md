@@ -357,7 +357,7 @@ metadata$sample[which(str_detect(metadata$cells, "^stim_"))] <- "stim"
 
 Now you are **all setup with the metrics you need to assess the quality of your data!** Your final metadata table will have rows that correspond to each cell, and columns with information about those cells:
 
-![pic14](/assets/img/scrnaseq/14.jpg)
+![pic14](https://raw.githubusercontent.com/leequn/leequn.github.io/master/assets/img/scrnaseq/14.jpg)
 
 **Saving the updated metadata to our Seurat object**
 
