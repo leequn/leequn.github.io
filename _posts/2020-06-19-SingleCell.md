@@ -107,6 +107,7 @@ The data used to test their algorithm is comprised of pooled Peripheral Blood Mo
 
 ##### 3.2.1.1 Raw data
 This dataset is available on GEO (GSE96583), however the available counts matrix lacked mitochondrial reads, so we downloaded the BAM files from the SRA (SRP102802). These BAM files were converted back to FASTQ files, then run through Cell Ranger to obtain the count data that we will be using.
+
 **NOTE**: The counts for this dataset is also freely available from 10X Genomics and is used as part of the [Seurat tutorial](https://satijalab.org/seurat/v3.0/immune_alignment.html).
 
 ##### 3.2.1.2 Metadata
@@ -135,7 +136,8 @@ Some relevant metadata for our dataset is provided below:
 - **Control sample** LINK: https://pan.baidu.com/s/1ChLI7QuTcXIXz9bXSdqbtQ   PASSWORD: 7ezu
 - **Stimulated sample** LINK: https://pan.baidu.com/s/12SRTbCiWyetSFI4DOjKbSA  PASSWORD: oaw2 
 
-#### Setting up the R environment
+#### 3.3 Setting up the R environment
+##### 3.3.1 Your working directory
 
 ```
 single_cell_rnaseq/
@@ -145,6 +147,19 @@ single_cell_rnaseq/
 ├── results
 └── figures
 ```
+##### 3.3.2 Loading libraries
+
+```R
+#load packages
+library(SingleCellExperiment)
+library(Seurat)
+library(tidyverse)
+library(Matrix)
+library(scales)
+library(cowplot)
+library(RCurl)
+```
+
 
 
 ## References
