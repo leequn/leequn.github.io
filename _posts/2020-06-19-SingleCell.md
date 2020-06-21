@@ -217,8 +217,12 @@ The Seurat object is a custom list-like object that has well-defined spaces to s
 
 ```
 #Explore the metadata
->head(ctrl@meta.data)
+head(ctrl@meta.data)
+```
 
+metadata:
+
+```
                     orig.ident nCount_RNA nFeature_RNA
 AAACATACAATGCC-1 SeuratProject       2344          874
 AAACATACATTTCC-1 SeuratProject       3125          896
@@ -229,13 +233,62 @@ AAACATACCTCGCT-1 SeuratProject       3519          866
 ```
 
 What do the columns of metadata mean?
-- orig.ident: this often contains the sample identity if known, but will default to “SeuratProject”
-- nCount_RNA: number of UMIs per cell
-- nFeature_RNA: number of genes detected per cell
+- **orig.ident**: this often contains the sample identity if known, but will default to “SeuratProject”
+- **nCount_RNA**: number of UMIs per cell
+- **nFeature_RNA**: number of genes detected per cell
+
 
 ##### Reading in multiple samples with a `for loop`
+In practice, you will likely have several samples that you will need to read in data for using one of the 2 functions we discussed earlier (`Read10X()` or `readMM()`). So, to make the data import into R more efficient we can use a `for loop`, that will interate over a series of commands for each of the inputs given.
+In R, it has the following structure/syntax:
+```
+## DO NOT RUN
+for (variable in input){
+	command1
+	command2
+	command3
+}
+```
+The for loop we will be using today will iterate over the two sample “files” and execute two commands for each sample - **(1)** read in the count data (`Read10X()`) and **(2)** create the Seurat objects from the read in data (`CreateSeuratObject()`):
+```
+# Create each individual Seurat object for every sample
+for (file in c("ctrl_raw_feature_bc_matrix", "stim_raw_feature_bc_matrix")){
+  seurat_data <- Read10X(data.dir = paste0("data/", file))
+  seurat_obj <- CreateSeuratObject(counts = seurat_data, 
+                                   min.features = 100, 
+                                   project = file)
+  assign(file, seurat_obj)
+}
+```
 
+Now that we have created both of these objects, let’s take a quick look at the metadata to see how it looks:
 
+```
+# Check the metadata in the new Seurat objects
+head(ctrl_raw_feature_bc_matrix@meta.data)
+head(stim_raw_feature_bc_matrix@meta.data)
+```
+
+metadata:
+
+```
+> head(ctrl_raw_feature_bc_matrix@meta.data)
+                                 orig.ident nCount_RNA nFeature_RNA
+AAACATACAATGCC-1 ctrl_raw_feature_bc_matrix       2344          874
+AAACATACATTTCC-1 ctrl_raw_feature_bc_matrix       3125          896
+AAACATACCAGAAA-1 ctrl_raw_feature_bc_matrix       2578          725
+AAACATACCAGCTA-1 ctrl_raw_feature_bc_matrix       3261          979
+AAACATACCATGCA-1 ctrl_raw_feature_bc_matrix        746          362
+AAACATACCTCGCT-1 ctrl_raw_feature_bc_matrix       3519          866
+> head(stim_raw_feature_bc_matrix@meta.data)
+                                 orig.ident nCount_RNA nFeature_RNA
+AAACATACCAAGCT-1 stim_raw_feature_bc_matrix       1221          606
+AAACATACCCCTAC-1 stim_raw_feature_bc_matrix       1782          807
+AAACATACCCGTAA-1 stim_raw_feature_bc_matrix       1451          605
+AAACATACCCTCGT-1 stim_raw_feature_bc_matrix       1549          747
+AAACATACGAGGTG-1 stim_raw_feature_bc_matrix       1303          558
+AAACATACGCGAAG-1 stim_raw_feature_bc_matrix       5445         1330
+```
 
 
 ## References
