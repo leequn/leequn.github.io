@@ -143,7 +143,13 @@ Some relevant metadata for our dataset is provided below:
 single_cell_rnaseq/
 ├── data
 │   ├──ctrl_raw_feature_bc_matrix
+│   │   ├──barcodes.tsv
+│   │   ├──features.tsv
+│   │   ├──matrix.mtx
 │   ├──stim_raw_feature_bc_matrix
+│   │   ├──barcodes.tsv
+│   │   ├──features.tsv
+│   │   ├──matrix.mtx
 ├── results
 └── figures
 ```
@@ -165,6 +171,8 @@ Regardless of the technology or pipeline used to process your single-cell RNA-se
 1. a file with the cell IDs, representing all cells quantified
 2. a file with the gene IDs, representing all genes quantified
 3. a matrix of counts per gene for every cell
+
+data/ctrl_raw_feature_bc_matrix folder:
 
 
 ## References
