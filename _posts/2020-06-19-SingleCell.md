@@ -213,7 +213,7 @@ ctrl <- CreateSeuratObject(counts = ctrl_counts, min.features = 100)
 
 **Seurat automatically creates some metadata** for each of the cells when you use the Read10X() function to read in data. This information is stored in the meta.data slot within the Seurat object (see more in the note below).
 
-`The Seurat object is a custom list-like object that has well-defined spaces to store specific information/data. You can find more information about the slots in the Seurat object at this [link](https://github.com/satijalab/seurat/wiki/Seurat).`
+The Seurat object is a custom list-like object that has well-defined spaces to store specific information/data. You can find more information about the slots in the Seurat object at this **[link](https://github.com/satijalab/seurat/wiki/Seurat).**
 
 ```
 #Explore the metadata
