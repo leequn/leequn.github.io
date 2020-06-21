@@ -178,13 +178,20 @@ For example: data/ctrl_raw_feature_bc_matrix folder:
 
 ![pic10](/assets/img/scrnaseq/10.jpg)
 
-- `features.tsv:`
+- `features.tsv:` This is a text file which contains the identifiers of the quantified genes. The source of the identifier can vary depending on what reference (i.e. Ensembl, NCBI, UCSC) you use in the quantification methods, but most often these are official gene symbols. The order of these genes corresponds to the order of the rows in the matrix file (i.e. these are the row names).
 
 ![pic11](/assets/img/scrnaseq/11.jpg)
 
-- `matrix.mtx:`
+- `matrix.mtx:` This is a text file which contains a matrix of count values. The rows are associated with the gene IDs above and columns correspond to the cellular barcodes. Note that there are many zero values in this matrix.
 
 ![pic12](/assets/img/scrnaseq/12.jpg)
+
+Loading this data into R requires us to **use functions that allow us to efficiently combine these three files into a single count matrix**. However, instead of creating a regular matrix data structure, the functions we will use create a **sparse matrix** to improve the amount of space, memory and CPU required to work with our huge count matrix.
+
+Different methods for reading in data include:
+- `readMM()`: This function is from the Matrix package and will turn our standard matrix into a sparse matrix. The features.tsv file and barcodes.tsv must first be individually loaded into R and then they are combined. For specific code and instructions on how to do this please see our additional material.
+- `Read10X()`: This function is from the Seurat package and will use the Cell Ranger output directory as input. In this way individual files do not need to be loaded in, instead the function will load and combine them into a sparse matrix for you. We will be using this function to load in our data!
+
 
 ## References
 
