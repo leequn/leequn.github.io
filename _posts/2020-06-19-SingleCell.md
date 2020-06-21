@@ -539,6 +539,21 @@ Based on these QC metrics we would identify any failed samples and move forward 
 save(filtered_seurat, file="data/seurat_filtered.RData")
 ```
 
+## 3.4 Count Normalization and Principal Component Analysis
+After attaining our high quality single cells, the next step in the single-cell RNA-seq (scRNA-seq) analysis workflow is to perform clustering. The goal of clustering is to separate different cell types into unique clusters of cells. To perform clustering, we determine the genes that are most different in their expression between cells. Then, we use these genes to determine which correlated genes sets are responsible for the largest differences in expression between cells.
+
+However, before we move onto clustering, there are a few concepts that we want to talk about.
+### 3.4.1 Count normalization
+First one is count normalization, which is essential to make accurate comparisons of gene expression between cells (or samples). The counts of mapped reads for each gene is proportional to the expression of RNA (“interesting”) in addition to many other factors (“uninteresting”). Normalization is the process of scaling raw count values to account for the “uninteresting” factors. In this way the expression levels are more comparable between and/or within cells.
+
+The main factors often considered during normalization are:
+- **Sequencing depth**: Accounting for sequencing depth is necessary for comparison of gene expression between cells. In the example below, each gene appears to have doubled in expression in cell 2, however this is a consequence of cell 2 having twice the sequencing depth.
+
+![pic22](/assets/img/scrnaseq/22.jpg)
+
+- **Gene length**: Accounting for gene length is necessary for comparing expression between different genes within the same cell. The number of reads mapped to a longer gene can appear to have equal count/expression as a shorter gene that is more highly expressed.
+
+![pic23](/assets/img/scrnaseq/23.jpg)
 
 
 ## References
