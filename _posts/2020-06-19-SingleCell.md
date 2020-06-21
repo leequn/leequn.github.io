@@ -132,11 +132,19 @@ Some relevant metadata for our dataset is provided below:
 
 **It is recommended that you have some expectation regarding the cell types you expect to see in a dataset prior to performing the QC. This will inform you if you have any cell types with low complexity (lots of transcripts from a few genes) or cells with higher levels of mitochondrial expression. This will enable us to account for these biological factors during the analysis workflow.**
 
-- Control sample LINK: https://pan.baidu.com/s/1ChLI7QuTcXIXz9bXSdqbtQ   PASSWORD: 7ezu
-- Stimulated sample LINK: https://pan.baidu.com/s/12SRTbCiWyetSFI4DOjKbSA  PASSWORD: oaw2 
+- **Control sample** LINK: https://pan.baidu.com/s/1ChLI7QuTcXIXz9bXSdqbtQ   PASSWORD: 7ezu
+- **Stimulated sample** LINK: https://pan.baidu.com/s/12SRTbCiWyetSFI4DOjKbSA  PASSWORD: oaw2 
 
 #### Setting up the R environment
 
+```
+single_cell_rnaseq/
+├── data
+│   ├──ctrl_raw_feature_bc_matrix
+│   ├──stim_raw_feature_bc_matrix
+├── results
+└── figures
+```
 
 
 ## References
