@@ -404,11 +404,38 @@ ggplot(metadata,aes(x=sample, fill=sample)) +
 ```
 ![pic15](/assets/img/scrnaseq/15.jpg)
 
+We see over 15,000 cells per sample, which is quite a bit more than the 12-13,000 expected. It is clear that we likely have some `junk ‘cells’ present`.
 
+##### 3.3.5.2 UMI counts (transcripts) per cell
+The UMI counts per cell should generally be above 500, that is the low end of what we expect. If UMI counts are between 500-1000 counts, it is usable but the cells probably should have been sequenced more deeply.
 
+![pic16](/assets/img/scrnaseq/16.jpg)
 
+We can see that majority of our cells in both samples have 1000 UMIs or greater, which is great.
 
+##### 3.3.5.3 Genes detected per cell
+We have similar expectations for gene detection as for UMI detection, although it may be a bit lower than UMIs. For high quality data, the proportional histogram should contain **a single large peak that represents cells that were encapsulated**. If we see a **small shoulder** to the right of the major peak (not present in our data), or a bimodal distribution of the cells, that can indicate a couple of things. It might be that there are a set of **cells that failed** for some reason. It could also be that there are **biologically different types of cells** (i.e. quiescent cell populations, less complex cells of interest), and/or one type is much smaller than the other (i.e. cells with high counts may be cells that are larger in size). Therefore, this threshold should be assessed with other metrics that we describe in this lesson.
 
+```
+# Visualize the distribution of genes detected per cell via histogram
+ggplot(metadata,aes(color=sample, x=nGene, fill= sample)) + 
+  geom_density(alpha = 0.2) + 
+  theme_classic() +
+  scale_x_log10() + 
+  geom_vline(xintercept = 300)
+```
+![pic17](/assets/img/scrnaseq/17.jpg)
+
+```
+# Visualize the distribution of genes detected per cell via boxplot
+ggplot(metadata,aes(x=sample, y=log10(nGene), fill=sample)) + 
+  geom_boxplot() + 
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  ggtitle("NCells vs NGenes")
+```
+![pic18](/assets/img/scrnaseq/18.jpg)
 
 ## References
 
