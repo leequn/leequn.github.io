@@ -238,7 +238,7 @@ What do the columns of metadata mean?
 - **nFeature_RNA**: number of genes detected per cell
 
 
-##### Reading in multiple samples with a `for loop`
+##### 3.3.3.2 Reading in multiple samples with a `for loop`
 In practice, you will likely have several samples that you will need to read in data for using one of the 2 functions we discussed earlier (`Read10X()` or `readMM()`). So, to make the data import into R more efficient we can use a `for loop`, that will interate over a series of commands for each of the inputs given.
 In R, it has the following structure/syntax:
 ```
@@ -289,6 +289,43 @@ AAACATACCCTCGT-1 stim_raw_feature_bc_matrix       1549          747
 AAACATACGAGGTG-1 stim_raw_feature_bc_matrix       1303          558
 AAACATACGCGAAG-1 stim_raw_feature_bc_matrix       5445         1330
 ```
+
+Next, we need to merge these objects together into a single Seurat object. This will make it easier to run the QC steps for both sample groups together and enable us to easily compare the data quality for all the samples.
+
+We can use the `merge()` function from the Seurat package to do this:
+
+```
+# Create a merged Seurat object
+merged_seurat <- merge(x = ctrl_raw_feature_bc_matrix, 
+                       y = stim_raw_feature_bc_matrix, 
+                       add.cell.id = c("ctrl", "stim"))
+```
+
+Because the same cell IDs can be used for different samples, we add a **sample-specific prefix** to each of our cell IDs using the `add.cell.id` argument. If we look at the metadata of the merged object we should be able to see the prefixes in the rownames:
+```
+# Check that the merged object has the appropriate sample-specific prefixes
+head(merged_seurat@meta.data)
+tail(merged_seurat@meta.data)
+```
+#### 3.3.4 Generating quality metrics
+Remember that Seurat automatically creates some metadata for each of the cells:
+
+![pic13](/assets/img/scrnaseq/13.jpg)
+
+We need to calculate some additional metrics for plotting:
+- **number of genes detected per UMI**: this metric with give us an idea of the complexity of our dataset (more genes detected per UMI, more complex our data)
+- **mitochondrial ratio**: this metric will give us a percentage of cell reads originating from the mitochondrial genes
+
+The number of genes per UMI for each cell is quite easy to calculate, and we will log10 transform the result for better comparison between samples.
+
+```
+# Add number of genes per UMI for each cell to metadata
+merged_seurat$log10GenesPerUMI <- log10(merged_seurat$nFeature_RNA) / log10(merged_seurat$nCount_RNA)
+```
+
+Seurat has a convenient function that allows us to calculate the **proportion of transcripts mapping to mitochondrial genes**. The `PercentageFeatureSet()` will take a pattern and search the gene identifiers. For each column (cell) it will take the sum of the counts slot for features belonging to the set, divide by the column sum for all features and multiply by 100. `Since we want the ratio value for plotting, we will reverse that step by then dividing by 100.`
+
+`**NOTE:**` The pattern provided (“^MT-“) works for human gene names. You may need to adjust depending on your organism of interest. If you weren’t using gene names as the gene ID, then this function wouldn’t work. We have [code available](https://github.com/hbctraining/scRNA-seq/blob/master/lessons/mitoRatio.md) to compute this metric on your own.
 
 
 ## References
