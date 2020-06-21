@@ -213,7 +213,7 @@ ctrl <- CreateSeuratObject(counts = ctrl_counts, min.features = 100)
 
 **Seurat automatically creates some metadata** for each of the cells when you use the Read10X() function to read in data. This information is stored in the meta.data slot within the Seurat object (see more in the note below).
 
-`The Seurat object is a custom list-like object that has well-defined spaces to store specific information/data. You can find more information about the slots in the Seurat object at this link.`
+`The Seurat object is a custom list-like object that has well-defined spaces to store specific information/data. You can find more information about the slots in the Seurat object at this [link](https://github.com/satijalab/seurat/wiki/Seurat).`
 
 ```
 #Explore the metadata
@@ -227,6 +227,14 @@ AAACATACCAGCTA-1 SeuratProject       3261          979
 AAACATACCATGCA-1 SeuratProject        746          362
 AAACATACCTCGCT-1 SeuratProject       3519          866
 ```
+
+What do the columns of metadata mean?
+- orig.ident: this often contains the sample identity if known, but will default to “SeuratProject”
+- nCount_RNA: number of UMIs per cell
+- nFeature_RNA: number of genes detected per cell
+
+##### Reading in multiple samples with a `for loop`
+
 
 
 
