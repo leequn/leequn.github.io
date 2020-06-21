@@ -83,7 +83,7 @@ The analysis workflow for scRNA-seq is similar for the different droplet-based s
 
 ![pic5](/assets/img/scrnaseq/5.jpg)
 
-### 3.1.2 Generation of count matrix
+#### 3.1.2 Generation of count matrix
 After sequencing, the sequencing facility will either output the raw sequencing data as BCL or FASTQ format or will generate the count matrix. If the reads are in BCL format, then we will need to convert to FASTQ format. There is a useful command-line tool called bcl2fastq that can easily perform this conversion.
 
 ![pic7](/assets/img/scrnaseq/7.jpg)
@@ -94,6 +94,50 @@ After sequencing, the sequencing facility will either output the raw sequencing 
 - Collapsing UMIs and quantification of reads
 
 If using 10X Genomics library preparation method, then the [Cell Ranger pipeline](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger) would be used for all of the above steps.
+
+### 3.2 Quality control set-up
+![pic8](/assets/img/scrnaseq/8.jpg)
+
+After quantifying gene expression we need to bring this data into R to generate metrics for performing QC. In this lesson we will talk about the format(s) count data can be expected in, and how to read it into R so we can move on to the QC step in the workflow. We will also discuss the dataset we will be using and the associated metadata.
+
+#### 3.2.1 Exploring the example dataset
+In this paper, the authors present a a computational algorithm that harnesses genetic variation (eQTL) to determine the genetic identity of each droplet containing a single cell (singlet) and identify droplets containing two cells from different individuals (doublets) [Kang et al, 2017](https://www.nature.com/articles/nbt.4042).
+The data used to test their algorithm is comprised of pooled Peripheral Blood Mononuclear Cells (PBMCs) taken from eight lupus patients, split into control and interferon beta-treated (stimulated) conditions.
+![pic9](/assets/img/scrnaseq/9.jpg)
+
+##### 3.2.1.1 Raw data
+This dataset is available on GEO (GSE96583), however the available counts matrix lacked mitochondrial reads, so we downloaded the BAM files from the SRA (SRP102802). These BAM files were converted back to FASTQ files, then run through Cell Ranger to obtain the count data that we will be using.
+**NOTE**: The counts for this dataset is also freely available from 10X Genomics and is used as part of the [Seurat tutorial](https://satijalab.org/seurat/v3.0/immune_alignment.html).
+
+##### 3.2.1.2 Metadata
+In addition to the raw data, we also need to collect information about the data; this is known as metadata. There is often a temptation to just start exploring the data, but it is not very meaningful if we know nothing about the samples that this data originated from.
+
+Some relevant metadata for our dataset is provided below:
+
+- The libraries were prepared using 10X Genomics version 2 chemistry
+- The samples were sequenced on the Illumina NextSeq 500
+- PBMC samples from eight individual lupus patients were separated into two aliquots each.
+	- One aliquot of PBMCs was activated by 100 U/mL of recombinant IFN-β for 6 hours.
+	- The second aliquot was left untreated.
+	- After 6 hours, the eight samples for each condition were pooled together in two final pools (stimulated cells and control cells). We will be working with these two, pooled samples.
+- 12,138 and 12,167 cells were identified (after removing doublets) for control and stimulated pooled samples, respectively.
+
+- Since the samples are PBMCs, we will expect immune cells, such as:
+	- B cells
+	- T cells
+      	- NK cells
+	- monocytes
+	- macrophages
+	- possibly megakaryocytes
+
+**It is recommended that you have some expectation regarding the cell types you expect to see in a dataset prior to performing the QC. This will inform you if you have any cell types with low complexity (lots of transcripts from a few genes) or cells with higher levels of mitochondrial expression. This will enable us to account for these biological factors during the analysis workflow.**
+
+- Control sample LINK: https://pan.baidu.com/s/1ChLI7QuTcXIXz9bXSdqbtQ   PASSWORD: 7ezu
+- Stimulated sample LINK: https://pan.baidu.com/s/12SRTbCiWyetSFI4DOjKbSA  PASSWORD: oaw2 
+
+#### Setting up the R environment
+
+
 
 ## References
 
