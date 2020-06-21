@@ -133,8 +133,8 @@ Some relevant metadata for our dataset is provided below:
 
 **It is recommended that you have some expectation regarding the cell types you expect to see in a dataset prior to performing the QC. This will inform you if you have any cell types with low complexity (lots of transcripts from a few genes) or cells with higher levels of mitochondrial expression. This will enable us to account for these biological factors during the analysis workflow.**
 
-- **Control sample** LINK: https://pan.baidu.com/s/1ChLI7QuTcXIXz9bXSdqbtQ   PASSWORD: 7ezu
-- **Stimulated sample** LINK: https://pan.baidu.com/s/12SRTbCiWyetSFI4DOjKbSA  PASSWORD: oaw2 
+- **Control sample** LINK: `https://pan.baidu.com/s/1ChLI7QuTcXIXz9bXSdqbtQ`   PASSWORD: 7ezu
+- **Stimulated sample** LINK: `https://pan.baidu.com/s/12SRTbCiWyetSFI4DOjKbSA`  PASSWORD: oaw2 
 
 #### 3.3 Setting up the R environment
 ##### 3.3.1 Your working directory
@@ -172,7 +172,7 @@ Regardless of the technology or pipeline used to process your single-cell RNA-se
 1. a file with the cell IDs, representing all cells quantified
 2. a file with the gene IDs, representing all genes quantified
 3. a matrix of counts per gene for every cell
-
+**DONOT UNZIP THESE FILES WHEN YOU DO scRNA-seq PROCESSING, YOU CAN UNZIP THESE FILES TO SEE INFORMATION OF THESE FILES**
 For example: data/ctrl_raw_feature_bc_matrix folder:
 - `barcodes.tsv:` This is a text file which contains all cellular barcodes present for that sample. Barcodes are listed in the order of data presented in the matrix file (i.e. these are the column names).
 
@@ -190,7 +190,44 @@ Loading this data into R requires us to **use functions that allow us to efficie
 
 Different methods for reading in data include:
 - `readMM()`: This function is from the Matrix package and will turn our standard matrix into a sparse matrix. The features.tsv file and barcodes.tsv must first be individually loaded into R and then they are combined. For specific code and instructions on how to do this please see our additional material.
-- `Read10X()`: This function is from the Seurat package and will use the Cell Ranger output directory as input. In this way individual files do not need to be loaded in, instead the function will load and combine them into a sparse matrix for you. We will be using this function to load in our data!
+- `Read10X()`: This function is from the Seurat package and will use the Cell Ranger output directory as input. In this way individual files do not need to be loaded in, instead the function will load and combine them into a sparse matrix for you. *We will be using this function to load in our data!*
+
+##### 3.3.3.1 Reading in a single sample (`read10X()`)
+When working with 10X data and its proprietary software Cell Ranger, you will always have an `outs` directory. Within this directory you will find a number of different files including:
+- **web_summary.html**: report that explores different QC metrics, including the mapping metrics, filtering thresholds, estimated number of cells after filtering, and information on the number of reads and genes per cell after filtering.
+- **BAM alignment files**: files used for visualization of the mapped reads and for re-creation of FASTQ files, if needed
+- **filtered_feature_bc_matrix**: folder containing all files needed to construct the count matrix using data filtered by Cell Ranger
+- **raw_feature_bc_matrix**:  folder containing all files needed to construct the count matrix using the raw unfiltered data
+
+We are mainly interested in the `raw_feature_bc_matrix` as we wish to perform our own QC and filtering while accounting for the biology of our experiment/biological system.
+
+If we had a single sample, we could generate the count matrix and then subsequently create a [Seurat object](https://github.com/satijalab/seurat/wiki/Seurat):
+
+```R
+#How to read in 10X data for a single sample (output is a sparse matrix)
+ctrl_counts <- Read10X(data.dir="data/ctrl_raw_feature_bc_matrix")
+#Turn count matrix into a Seurat object (output is a Seurat object)
+ctrl <- CreateSeuratObject(counts = ctrl_counts, min.features = 100)
+```
+**NOTE**: The `min.features` argument specifies the minimum number of genes that need to be detected per cell. This argument will filter out poor quality cells that likely just have random barcodes encapsulated without any cell present. Usually, cells with less than 100 genes detected are not considered for analysis.
+
+**Seurat automatically creates some metadata** for each of the cells when you use the Read10X() function to read in data. This information is stored in the meta.data slot within the Seurat object (see more in the note below).
+
+`The Seurat object is a custom list-like object that has well-defined spaces to store specific information/data. You can find more information about the slots in the Seurat object at this link.`
+
+```
+#Explore the metadata
+>head(ctrl@meta.data)
+
+                    orig.ident nCount_RNA nFeature_RNA
+AAACATACAATGCC-1 SeuratProject       2344          874
+AAACATACATTTCC-1 SeuratProject       3125          896
+AAACATACCAGAAA-1 SeuratProject       2578          725
+AAACATACCAGCTA-1 SeuratProject       3261          979
+AAACATACCATGCA-1 SeuratProject        746          362
+AAACATACCTCGCT-1 SeuratProject       3519          866
+```
+
 
 
 ## References
