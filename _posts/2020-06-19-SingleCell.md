@@ -173,8 +173,13 @@ Regardless of the technology or pipeline used to process your single-cell RNA-se
 2. a file with the gene IDs, representing all genes quantified
 3. a matrix of counts per gene for every cell
 
-data/ctrl_raw_feature_bc_matrix folder:
-
+For example: data/ctrl_raw_feature_bc_matrix folder:
+- `barcodes.tsv:` This is a text file which contains all cellular barcodes present for that sample. Barcodes are listed in the order of data presented in the matrix file (i.e. these are the column names).
+![pic10](/assets/img/scrnaseq/10.jpg)
+- `features.tsv:`
+![pic11](/assets/img/scrnaseq/11.jpg)
+- `matrix.mtx:`
+![pic12](/assets/img/scrnaseq/12.jpg)
 
 ## References
 
