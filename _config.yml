@@ -40,7 +40,7 @@ round-avatar: true
 # If you don't want to show a link to an RSS feed, set rss to "false".
 social-network-links:
   email: "leequncn@163.com"
-  github: leequn
+ # github: leequn
   rss: true
 #  reddit: yourname
 #  linkedin: daattali
