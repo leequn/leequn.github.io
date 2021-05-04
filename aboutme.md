@@ -8,7 +8,6 @@ desp:
 ---
 Email: <a href="mailto:leequncn@163.com" target="_blank">leequncn@163.com</a><br>
 Major: Bioinformatics <br>
-Resume: [My Resume](/resources/Resume/resume.html)<br>
 Other site: <a href="http://www.leequn.cn/" target="_blank">leequn.cn</a> <br>
 Research: 
 - The landscape of alternative splicing during mouse spermatogenesis
