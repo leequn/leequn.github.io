@@ -4,7 +4,7 @@ title: Publications
 subtitle: Make Your Absence Felt
 ---
 ## 2021
-- Zhenshuo Zhu, Xiaolong Wu, **Qun Li**, Juqing Zhang, Shuai Yu,  Qiaoyan Shen, Zhe Zhou, Qin Pan, Wei Yue, Dezhe Qin, Ying Zhang, Wenxu Zhao, Rui Zhang, Sha Peng, Na Li, Shiqiang Zhang, Anmin Lei, Yi-Liang Miao, Zhonghua Liu, Xingqi Chen, Huayan Wang, Mingzhi Liao\*, Jinlian Hua\*. Histone demethylase complexes KDM3A and KDM3B cooperate with OCT4/SOX2 to define a pluripotency gene regulatory network. The FASEB Journal <br>
+- Zhenshuo Zhu, Xiaolong Wu, **Qun Li**, Juqing Zhang, Shuai Yu,  Qiaoyan Shen, Zhe Zhou, Qin Pan, Wei Yue, Dezhe Qin, Ying Zhang, Wenxu Zhao, Rui Zhang, Sha Peng, Na Li, Shiqiang Zhang, Anmin Lei, Yi-Liang Miao, Zhonghua Liu, Xingqi Chen, Huayan Wang, Mingzhi Liao\*, Jinlian Hua\*. Histone demethylase complexes KDM3A and KDM3B cooperate with OCT4/SOX2 to define a pluripotency gene regulatory network. The FASEB Journal (co-first author)<br>
 
 ## 2020
 - **Qun Li**, Tongtong Li, Xia Xiao, Dawood Ahmad Warraich, Ning Zhang, Hao Li, Ziyu Chen, Junyao Hou, Mingzhi Liao\*. Specific expression and alternative splicing of mouse genes during spermatogenesis. Molecular Omics. <br>
