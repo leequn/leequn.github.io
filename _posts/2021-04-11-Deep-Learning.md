@@ -8,4 +8,4 @@ tags: [Bioinformatics, Deep Learning]
 comments: true
 ---
 
-# Deep Learning---个人笔记
+# Deep Learning---Notes
